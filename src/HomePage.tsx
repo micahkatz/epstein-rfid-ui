@@ -5,6 +5,7 @@ import { InputContext } from './context/inputContext';
 import VisitorList from './components/VisitorList';
 
 import { ReactComponent as Logo } from './assets/epstein-hillel-logo-color.svg'
+import PopupModal from './components/PopupModal';
 
 function HomePage() {
     const homePageRef = React.useRef<HTMLDivElement | null>(null)
@@ -24,6 +25,7 @@ function HomePage() {
                 <Logo className='school-logo' />
             </div>
             <VisitorList />
+            <PopupModal />
         </div>
     );
 }

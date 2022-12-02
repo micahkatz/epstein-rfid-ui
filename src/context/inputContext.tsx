@@ -1,7 +1,12 @@
 //TODO
 import React, { useState, useEffect } from 'react';
+
+import { useLocalStorage } from 'usehooks-ts'
+
+
 //@ts-ignore
 import inputData from '../data/inputData.txt';
+import { ModalContext } from './modalContext';
 
 
 interface Props {
@@ -19,10 +24,11 @@ export const InputContext = React.createContext({
 });
 
 const InputContextComponent = (props: Props) => {
+    const modalContext = React.useContext(ModalContext)
     const [currIdArray, setCurrIdArray] = React.useState<string[]>([])
     const [attendeeIds, setAttendeeIds] = React.useState<string[]>([])
     const [attendeeData, setAttendeeData] = React.useState<AttendeeData[]>([])
-    const [currAttendees, setCurrAttendees] = React.useState<AttendeeData[]>([])
+    const [currAttendees, setCurrAttendees] = useLocalStorage<AttendeeData[]>('currAttendees', [])
     const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
         console.log('pressed key:', e.key)
         const currKey: string = e.key
@@ -59,10 +65,13 @@ const InputContextComponent = (props: Props) => {
     const removeVisitor = (existingVisitor: AttendeeData) => {
         setCurrAttendees((prev: AttendeeData[]) => prev.filter(item => item.id !== existingVisitor.id))
         console.log('Removed existingVisitor', existingVisitor)
+        modalContext.setCurrMessage(`Goodbye, ${existingVisitor.name}!`)
+
     }
     const addVisitor = (attendee: AttendeeData) => {
         console.log('Attendee found', attendee)
         setCurrAttendees((prev: AttendeeData[]) => [...prev, attendee])
+        modalContext.setCurrMessage(`Welcome, ${attendee.name}!`)
     }
 
     const getAttendeeById = (dataList: AttendeeData[], id: string) => {
