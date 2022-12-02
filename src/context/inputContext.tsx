@@ -26,7 +26,6 @@ export const InputContext = React.createContext({
 const InputContextComponent = (props: Props) => {
     const modalContext = React.useContext(ModalContext)
     const [currIdArray, setCurrIdArray] = React.useState<string[]>([])
-    const [attendeeIds, setAttendeeIds] = React.useState<string[]>([])
     const [attendeeData, setAttendeeData] = React.useState<AttendeeData[]>([])
     const [currAttendees, setCurrAttendees] = useLocalStorage<AttendeeData[]>('currAttendees', [])
     const handleKeyPress = (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -50,9 +49,11 @@ const InputContextComponent = (props: Props) => {
                     } else {
                         addVisitor(attendee)
                     }
-
+                    modalContext.setIsWarning(false);
                 } else {
                     console.log('Attendee not found')
+                    modalContext.setCurrMessage(`Sorry! Invalid Code`)
+                    modalContext.setIsWarning(true);
                 }
 
             }

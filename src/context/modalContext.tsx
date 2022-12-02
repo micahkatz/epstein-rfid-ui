@@ -16,7 +16,9 @@ interface AttendeeData {
 export const ModalContext = React.createContext({
     currMessage: '',
     isShown: false,
-    setCurrMessage: (message: string) => { }
+    isWarning: false,
+    setCurrMessage: (message: string) => { },
+    setIsWarning: (message: boolean) => { }
 });
 
 
@@ -24,6 +26,7 @@ export const ModalContext = React.createContext({
 const ModalContextProvider = (props: Props) => {
     const [currMessage, setCurrMessage] = React.useState<string>('')
     const [isShown, setIsShown] = React.useState(false)
+    const [isWarning, setIsWarning] = React.useState(false)
 
     React.useEffect(() => {
         if (currMessage !== '') {
@@ -43,6 +46,7 @@ const ModalContextProvider = (props: Props) => {
         if (isShown === false) {
             const timeoutID = setTimeout(() => {
                 setCurrMessage('');
+                setIsWarning(false)
             }, 500);
 
             return () => {
@@ -56,7 +60,9 @@ const ModalContextProvider = (props: Props) => {
     const store = {
         currMessage,
         setCurrMessage,
-        isShown
+        isShown,
+        isWarning,
+        setIsWarning
     };
 
     return (

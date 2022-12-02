@@ -13,6 +13,11 @@
         transition: opacity 0.5s ease-in-out;
     }
 
+    .welcome-wrapper.warning {
+        background-color: #FFBA30;
+        transition: opacity 0.5s ease-in-out;
+    }
+
     .welcome-text {
         padding: 20px;
         font-size: 2em;

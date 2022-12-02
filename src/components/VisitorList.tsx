@@ -7,11 +7,17 @@ function VisitorList() {
     const inputContext = React.useContext(InputContext)
     return (
         <div className="VisitorList">
-            {inputContext.currAttendees.reverse().map(attendee => (
+            {inputContext.currAttendees.length > 0 ? inputContext.currAttendees.map(attendee => (
                 <div className='visitor'>
                     <p className='visitor-name'>{attendee.name}</p>
                 </div>
-            ))}
+            ))
+                : <div>
+                    <div className='visitor'>
+                        <p className='visitor-name'>There is no one in the building.</p>
+                    </div>
+                </div>
+            }
         </div>
     );
 }

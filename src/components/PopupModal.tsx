@@ -9,7 +9,7 @@ function PopupModal() {
     const modalContext = React.useContext(ModalContext)
     return (
         <div className={`PopupModal`}>
-            <div className='welcome-wrapper' style={{ opacity: modalContext.isShown ? 1 : 0 }}>
+            <div className={modalContext.isWarning ? 'welcome-wrapper warning' : 'welcome-wrapper'} style={{ opacity: modalContext.isShown ? 1 : 0 }}>
                 <h1 className='welcome-text'>{modalContext.currMessage}</h1>
             </div>
         </div>
