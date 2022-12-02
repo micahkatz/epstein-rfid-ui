@@ -38,6 +38,8 @@ const InputContextComponent = (props: Props) => {
 
             if (incomingId.toLowerCase() === 'reset') {
                 setCurrAttendees([])
+                modalContext.setCurrMessage(`Successfully Reset`)
+                modalContext.setIsWarning(true);
             } else {
                 const attendee = getAttendeeById(attendeeData, incomingId)
                 if (attendee) {
