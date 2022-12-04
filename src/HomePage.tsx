@@ -26,6 +26,7 @@ function HomePage() {
             </div>
             <VisitorList />
             <PopupModal />
+            <img src={require('./assets/swirl.png')} alt='swirl' className='swirl' />
         </div>
     );
 }
