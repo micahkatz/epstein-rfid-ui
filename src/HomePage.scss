@@ -27,6 +27,10 @@
 
 .swirl {
     // width: 100%;
-    height: 200rem;
+    height: 50rem;
+    position: absolute;
+
+    bottom: 0;
+    object-fit: contain;
     max-width: 100vw;
 }
