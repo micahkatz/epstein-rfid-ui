@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import { useLocalStorage } from 'usehooks-ts'
 
+// import * as fs from 'fs'
 
 //@ts-ignore
 import inputData from '../data/inputData.txt';
@@ -108,9 +109,24 @@ const InputContextComponent = (props: Props) => {
         }
     }
 
+    const saveCurrAttendees = () => {
+
+        console.log('saveCurrAttendees')
+        // fs.writeFile("../data/liveVisitors.txt", 'Hello World', 'utf8', function (err) {
+        //     if (err) {
+        //         console.log('there was an error', err);
+        //     }
+        //     console.log("file saved!");
+        // });
+    }
+
     React.useEffect(() => {
         getAttendeeData()
     }, [])
+
+    React.useEffect(() => {
+        saveCurrAttendees()
+    }, [currAttendees])
 
     const store = {
         handleKeyPress,

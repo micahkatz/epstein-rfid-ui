@@ -16,17 +16,19 @@ function HomePage() {
         homePageRef && homePageRef.current && homePageRef.current.focus();
     }, []);
     return (
-        <div className="HomePage" onKeyDown={inputContext.handleKeyPress} tabIndex={0} ref={homePageRef}>
-            <div className='header'>
+        <div className="App">
+            <div className="HomePage" onKeyDown={inputContext.handleKeyPress} tabIndex={0} ref={homePageRef}>
+                <div className='header'>
 
-                <h1 className='header-title'>
-                    Welcome to
-                </h1>
-                <Logo className='school-logo' />
+                    <h1 className='header-title'>
+                        Welcome to
+                    </h1>
+                    <Logo className='school-logo' />
+                </div>
+                <VisitorList />
+                <PopupModal />
+                <img src={require('./assets/swirl.png')} alt='swirl' className='swirl' />
             </div>
-            <VisitorList />
-            <PopupModal />
-            <img src={require('./assets/swirl.png')} alt='swirl' className='swirl' />
         </div>
     );
 }

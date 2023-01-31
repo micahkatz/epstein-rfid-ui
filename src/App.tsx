@@ -5,13 +5,12 @@ import HomePage from './HomePage';
 import InputContext from './context/inputContext';
 import ModalContext from './context/modalContext';
 
+
 function App() {
   return (
     <ModalContext>
       <InputContext>
-        <div className="App">
-          <HomePage />
-        </div>
+        <HomePage />
       </InputContext>
     </ModalContext>
   );
