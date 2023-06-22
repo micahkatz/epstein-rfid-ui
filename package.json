@@ -1,0 +1,77 @@
+{
+    "name": "epstein-rfid-ui",
+    "version": "0.1.0",
+    "private": true,
+    "main": "electron/main.ts",
+    "homepage": ".",
+    "dependencies": {
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.4.0",
+        "@testing-library/user-event": "^13.5.0",
+        "@types/jest": "^27.5.2",
+        "@types/node": "^18.11.11",
+        "@types/react": "^18.0.25",
+        "@types/react-dom": "^18.0.9",
+        "browserify-fs": "^1.0.0",
+        "electron-is-dev": "^2.0.0",
+        "fs": "^0.0.1-security",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.8.0",
+        "react-scripts": "5.0.1",
+        "sass": "^1.56.1",
+        "typescript": "^4.9.3",
+        "usehooks-ts": "^2.9.1",
+        "web-vitals": "^2.1.4"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "build-electron": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "deploy:sampleData": "echo \"Micah Katz, 12345678\nJane Doe, 876543\" >> ./src/data/inputData.txt",
+        "electron:start": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron http://localhost:3000\"",
+        "electron:build": "yarn build-electron && electron-builder build --publish never",
+        "electron:build:all": "yarn build-electron && electron-builder build --publish never -mw"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "browser": {
+        "fs": false,
+        "os": false,
+        "path": false
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0",
+        "electron": "^22.1.0",
+        "electron-builder": "^23.6.0",
+        "wait-on": "^7.0.1"
+    },
+    "build": {
+        "appId": "com.epstein-rfid-ui",
+        "productName": "Epstein Hillel School",
+        "files": [
+            "build/**/*",
+            "electron/main.ts",
+            "package.json"
+        ],
+        "extends": null
+    }
+}
