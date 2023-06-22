@@ -1,10 +1,9 @@
-//TODO
 import React, { useState, useEffect } from 'react';
 // import fs from 'fs'
 import { useLocalStorage } from 'usehooks-ts'
 
 
-//@ts-ignore
+// @ts-ignore
 import inputData from '../data/inputData.txt';
 import { ModalContext } from './modalContext';
 
@@ -18,8 +17,8 @@ declare global {
     }
 }
 const { electron } = window
-const fs = electron.require('fs')
-// const fs = require('fs')
+// const fs = electron.require('fs')
+const fs = require('fs')
 
 interface Props {
     children: any
@@ -120,13 +119,13 @@ const InputContextComponent = (props: Props) => {
     const saveCurrAttendees = () => {
 
         console.log('saveCurrAttendees new')
-        // @ts-ignore
-        fs.writeFile("liveVisitors.txt", 'Hello World', 'utf8', function (err) {
-            if (err) {
-                console.log('there was an error', err);
-            }
-            console.log("file saved!");
-        });
+        // // @ts-ignore
+        // fs.writeFile("liveVisitors.txt", 'Hello World', 'utf8', function (err) {
+        //     if (err) {
+        //         console.log('there was an error', err);
+        //     }
+        //     console.log("file saved!");
+        // });
     }
 
     React.useEffect(() => {
